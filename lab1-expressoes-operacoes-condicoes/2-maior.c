@@ -19,10 +19,10 @@ int maior() {
     printf("Digite o terceiro numero: ");
     scanf("%i", &n3);
 
-    if(n1 > n2 && n1 > n3) {
+    if(n1 >= n2 && n1 >= n3) {
         m = n1;
     }
-    else if(n2 > n1 && n2 > n3){
+    else if(n2 >= n1 && n2 >= n3){
         m = n2;
     }
     else {
