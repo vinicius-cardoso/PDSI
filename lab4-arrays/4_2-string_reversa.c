@@ -11,7 +11,7 @@ int main(){
     int i, j = 0, tam;
     char str[1000];
 
-    scanf("%s", &str);
+    fgets(str, 1000, stdin);
     tam = strlen(str);
 
     for(i = tam; i>=0; i--){
