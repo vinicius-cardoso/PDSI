@@ -1,8 +1,3 @@
-/*
-    Faça um programa para imprimir todos os números primos num intervalo entre A e B, sendo A e B números inteiros positivos e menores que 10000. A e B devem ser fornecidos pelo usuário do seu programa.
-    A entrada consiste em dois números inteiros que representam o intervalo A e B.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
