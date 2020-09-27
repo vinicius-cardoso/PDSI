@@ -3,38 +3,111 @@
 #include <string.h>
 
 int main(){
-    int jgs, tbl, i, j;
-    int mtx[4][4];
-    char k[2] = "x";
+    int jgs, tbl, jgd, zeros = 0;
 
-    printf("Digite a quantidade de jogos (1-10): ");
+    // fim: conta se o jogador perdeu, njgs: numero de jogos ja feitos, njgd: numero de jogadas ja feitas, 
+    // ft: indica se faltou terminar, (i, j): varrer a matriz, (x, y): coordenadas da jogada.    
+    int fim = 0, njgs, njgd, ft = 0, i, j, x, y;
+    char sqr[1];
+
+    // Quantidade de jogos (1-10)
     scanf("%d", &jgs);
 
-    printf("Digite o tamanho do tabuleiro (2-10): ");
-    scanf("%d", &tbl);
+    for(njgs = 0; njgs < jgs; njgs++){
+        // Tamanho do tabuleiro (2-10);
+        scanf("%d", &tbl);
 
-    for(i = 0; i < tbl; i++){
-        for(j = 0; j < tbl; j++){
-            //fgets(k, 2, stdin);
-            scanf("%s", &k);
-            if(k == "x"){
-                mtx[i][j] = 0;
-            }
-            if(k == "b"){
-                mtx[i][j] = 1;
-            }
-            else{
-                main();
+        int mtx[tbl][tbl];
+
+        getchar();
+        for(i = 0; i < tbl; i++){
+            for(j = 0; j < tbl; j++){
+                scanf("%s", &sqr);
+                getchar();
+                if(strcmp(sqr, "x") == 0){
+                    mtx[i][j] = 0;
+                }
+                else if(strcmp(sqr, "b") == 0){
+                    mtx[i][j] = 1;
+                }
+                else{
+                    main();
+                }
             }
         }
-        printf("\n");
-    }
+        // Quantidade de jogadas;
+        scanf("%d", &jgd);
 
-    for(i = 0; i < tbl; i++){
-        for(j = 0; j < tbl; j++){
-            printf("%d", mtx[i][j]);
+        for(njgd = 0; njgd < jgd; njgd++){
+            scanf("%d %d", &x, &y);
+            for(i = 0; i < tbl; i++){
+                for(j = 0; j < tbl; j++){
+                    if(mtx[i][j] == 1 && x == i && y == j){
+                        fim++;
+                    }
+                    if(mtx[i][j] == 0 && x == i && y == j){
+                        mtx[i][j] = 3;
+
+                        // Laterais
+                        if(i < (tbl - 1)){ // Bloco da direita 
+                            if(mtx[i + 1][j] != 1){
+                                mtx[i + 1][j] = 3;
+                            }
+                        }
+                        if(j < (tbl - 1)){ // Bloco de baixo 
+                            if(mtx[i][j + 1] != 1){
+                                mtx[i][j + 1] = 3;
+                            }
+                        }
+                        if(i > 0){ // Bloco da esquerda
+                            if(mtx[i - 1][j] != 1){
+                                mtx[i - 1][j] = 3;
+                            }
+                        }
+                        if(j > 0){ // Bloco de cima
+                            if(mtx[i][j - 1] != 1){
+                                mtx[i][j - 1] = 3;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        printf("\n");
+
+        /* for(i = 0; i < tbl; i++){
+            for(j = 0; j < tbl; j++){
+                printf("%d ", mtx[i][j]);
+            }
+            printf("\n");
+        } */
+            
+        for(i = 0; i < tbl; i++){
+            if(ft == 1){
+                break;
+            }
+            for(j = 0; j < tbl; j++){
+                if(mtx[i][j] == 0 && fim == 0){
+                    zeros++;
+                    if(zeros > 1){
+                        printf("FALTOU TERMINAR\n");
+                        ft = 1;
+                        break;
+                    }
+                }
+            }
+        }
+            
+        if(fim == 0 && ft == 0){
+            printf("GANHOU\n");
+        }
+        if(fim >= 1){
+            printf("PERDEU\n");
+        }
+
+        // Zera as variávies para a proxima execucao
+        fim = 0;
+        ft = 0;
+        zeros = 0;
     }
 
     return 0;
