@@ -26,7 +26,7 @@ int main(){
             else{
                 printf("\nInserir: Nome Idade Salario\n");
                 scanf("%s %d %f", &p[i].nome, &p[i].idade, &p[i].salario);
-                printf("Registro %s %d %.2f inserido", p[i].nome, p[i].idade, p[i].salario);
+                printf("Registro %s %d %.2f inserido\n", p[i].nome, p[i].idade, p[i].salario);
                 i++;         
             }
         }
@@ -35,7 +35,7 @@ int main(){
             scanf("%s", &busca);
             for(j = 0;j < 5; j++){
                 if(strcmp(p[j].nome, busca) == 0){
-                    printf("\nRegistro %s %d %.2f", p[j].nome, p[j].idade, p[j].salario);
+                    printf("\nRegistro %s %d %.2f\n", p[j].nome, p[j].idade, p[j].salario);
                     break;
                 }
                 else{
