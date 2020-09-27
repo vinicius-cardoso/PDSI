@@ -82,7 +82,7 @@ int main(){
             scanf("%s", &busca);
             for(i = 0; i < 101; i++){
                 if(strcmp(c[cont].nome, busca) == 0){
-                    printf("Registro %s %d %s\n", c[cont].nome, c[cont].idade, c[cont].telefone);
+                    printf("Registro %s %d %s\n exibido", c[cont].nome, c[cont].idade, c[cont].telefone);
                     break;
                 }
                 else{
