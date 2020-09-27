@@ -1,13 +1,3 @@
-/*
-    Aproxime o valor de Pi empregando a série infinita de Gregory-Leibniz:
-
-    Pi = 4 - 4/3 + 4/5 - 4/7 + ...
-
-    A sua função deve retornar quantas iterações são necessárias para encontrar um valor
-    que seja diferente de M_PI (uma constante da biblioteca math.h) por no máximo um valor X.
-    Dado o valor referente a X, deve-se imprimir o número de iterações necessárias.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

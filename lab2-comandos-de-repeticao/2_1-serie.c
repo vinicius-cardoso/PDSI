@@ -1,13 +1,3 @@
-/*
-    Implemente um programa que imprima todos os termos da série dado n, e os termos x0
-    e x1. Os outros termos da série serão:
-
-    xn = 4*xn-1 -2*xn-2
-
-    O primeiro valor é referente a variável Xn, seguida de (X-1) e (X-2). Deve-se imprimir o
-    valor de cada X seguido do respectivo valor calculado.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 

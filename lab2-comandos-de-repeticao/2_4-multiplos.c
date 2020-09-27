@@ -1,10 +1,3 @@
-/*
-    Faça um programa que compute quantos são os múltiplos de 2, de 3 e de 5 entre 1 e X;
-    compute também quantos são os números múltiplos de 2, 3 e 5 ao mesmo tempo.
-    (utilize while())
-    É fornecido o valor de X onde deve ser impresso a quantidade de múltiplos conforme abaixo.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
