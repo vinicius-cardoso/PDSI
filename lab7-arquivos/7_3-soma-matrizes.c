@@ -6,7 +6,7 @@ FILE *arq;
 int main(){
     int i, j;
     char nome[50];
-    int matrizA[5][5], matrizB[5][5], matrizC[5][5];
+    int matrizA[7][7], matrizB[7][7], matrizC[7][7];
 
     scanf("%s", &nome);
 
