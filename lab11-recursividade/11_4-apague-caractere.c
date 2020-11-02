@@ -1,13 +1,27 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+ 
+void removechar(char *str, char chr){
+	char ult = str[strlen(str)];
+    
+    if(str[0] == ult){
+        return 0;
+    }
 
-int apagar(){
-
-    return 0;
+    if(str[0] == chr){
+        
+    }
 }
-
+ 
 int main(){
+    char str[50], chr;
 
-    return 0;
+    scanf("%s", &str);
+    scanf(" %c", &chr);
+
+    removechar(str, chr);
+
+    printf("%s", str);
+ 
+	return 0;    
 }

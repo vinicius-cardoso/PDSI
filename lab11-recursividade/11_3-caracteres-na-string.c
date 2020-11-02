@@ -2,25 +2,28 @@
 #include <stdlib.h>
 #include <string.h>
 
-int n(char str[], char chr, int tam){
-    if(str[tam] != chr){
+int chrcount(char* str, char chr){
+    int count = 0;
+    char ultimo = str[strlen(str)];
+
+    if(str[0] == ultimo){
         return 0;
     }
-    return (n(str[tam - 1], chr, tam) + n(str[tam - 1], chr, tam));
+
+    if(str[0] == chr){
+        count++;
+    }
+
+    return count + chrcount(&str[1], chr);
 }
 
 int main(){
-    char str[50], chr[2];
-    int i = 0, tam;
+    char str[50], chr;
 
     scanf("%s", &str);
-    scanf("%s", &chr);
+    scanf(" %c", &chr);
 
-    tam = strlen(str);
-
-    printf("%d", tam);
-
-    printf("%d", n(str, chr, tam));
+    printf("%d", chrcount(str, chr));
 
     return 0;
 }
