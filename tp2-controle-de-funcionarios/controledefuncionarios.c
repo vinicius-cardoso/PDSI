@@ -36,7 +36,7 @@ int ndias(int dia, int mes, int ano){
         }
     }
 
-    for(i = ano; i < 2019; i++){
+    for(i = ano; i < 2020; i++){
         if(i % 4 == 0 && (i % 100 != 0 || i % 400 == 0)){
             nda = nda + 366;
         }
@@ -50,18 +50,17 @@ int ndias(int dia, int mes, int ano){
     return ndias;
 }
 
-// Função 1
-void exportar(Funcionario f[], int qtd, int opc, char *argv[]){
+// Função 1: Lista de funcionarios em ordem alfabetica em um arquivo de saida
+void exportar(Funcionario f[], int qtd, char *argv[]){
     FILE *saida;
 
     int i, j, tdia, tmes, tano;
     float tsalario;
     char temp[50], tdep[50], strdia[4], strmes[4], strano[8];
     
-    if(opc == 1){
-        saida = fopen(argv[3], "w");
-    }
+    saida = fopen(argv[3], "w");
 
+    // Ordena os funcionarios em ordem alfabetica
     for(i = 0; i < qtd; i++){
         for(j = 0; j < qtd; j++){
             if((strcmp(f[i].nome, f[j].nome)) < 0){
@@ -115,7 +114,7 @@ void exportar(Funcionario f[], int qtd, int opc, char *argv[]){
     fclose(saida);
 }
 
-// Função 2
+// Função 2: Lista de Funcionarios em ordem alfabetica por departamento
 void listar(Funcionario f[], int qtd, char *dep){
     int i, j, tdia, tmes, tano;
     float tsalario;
@@ -176,7 +175,7 @@ void listar(Funcionario f[], int qtd, char *dep){
     }
 }
 
-// Função 3
+// Função 3: Funcionario mais antigo
 void mais_antigo(Funcionario f[], int qtd){
     int i, ref = 0, maior;
 
@@ -211,7 +210,7 @@ void mais_antigo(Funcionario f[], int qtd){
     }
 }
 
-// Função 4
+// Função 4: Funcionario mais antigo por departamento
 void mais_antigodep(Funcionario f[], int qtd, char *dep){
     int i, ref = 0, maior;
 
@@ -252,7 +251,7 @@ void mais_antigodep(Funcionario f[], int qtd, char *dep){
     }
 }
 
-// Funcao 5
+// Funcao 5: Media salarial de todos os funcionarios
 void media_salarial(Funcionario f[], int qtd){
     int i;
     double soma = 0, media;
@@ -266,7 +265,7 @@ void media_salarial(Funcionario f[], int qtd){
     printf("%.2lf\n", media);
 }
 
-// Funcao 6
+// Funcao 6: media salarial de todos os funcionarios de um departamento
 void media_salarialdep(Funcionario f[], int qtd, char *dep){
     int i, nqtd = 0;
     double soma = 0, media;
@@ -288,7 +287,7 @@ void media_salarialdep(Funcionario f[], int qtd, char *dep){
 int main(int argc, char *argv[]){
     // qtd: quantidade de funcionarios, opc: qual funcao o usuario deseja 
     // fnc: funcionario atual, dep: departamento
-    int ptr, qtd, opc, fnc;
+    int qtd, opc, fnc;
     char dep[50];
 
     arq = fopen(argv[1], "r");
@@ -299,14 +298,7 @@ int main(int argc, char *argv[]){
     }
 
     // Le a quantidade de funcionarios
-    ptr = fgetc(arq);
-    qtd = ptr;
-    qtd = atoi(&qtd);
-
-    // Primeira linha
-    while(ptr != '\n'){
-        ptr = fgetc(arq);
-    }
+    fscanf(arq, "%d\n", &qtd);
     
     // Adiciona os dados de cada funcionario do arquivo em um vetor de funcionarios
     for(fnc = 0; fnc < qtd; fnc++){
@@ -318,7 +310,7 @@ int main(int argc, char *argv[]){
 
     switch (opc){
     case 1:
-        exportar(f, qtd, opc, argv);
+        exportar(f, qtd, argv);
         break;
 
     case 2:
